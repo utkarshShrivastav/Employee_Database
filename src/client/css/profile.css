@@ -16,9 +16,10 @@ body{
     float: left;
     margin: 0px;
     border-collapse: collapse;
+    margin-bottom: 100px;
 }
 
-.table{
+.tab{
     float:right;
     border-collapse: collapse;
 }
@@ -77,4 +78,10 @@ body{
     margin-top: 100px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     padding:6px 20px;
+}
+
+.table{
+    margin:10px auto;
+    max-width: 95%;
+    min-width:50%
 }

@@ -7,15 +7,15 @@ const passport = require("passport");
 const { ensureAuthenticated } = require("../config/Auth");
 
 router.get("/", ensureAuthenticated, (req, res) => {
-  var array = [];
-  Employee.find().then(user=>{
-      array.push(user);
-      console.log(array);
-    
-  }).catch(err=>{
-    console.log(err)
-  })
-  res.render("profile",{array:array});
+  Employee.find()
+    .then((employee) => {
+      console.log(employee);
+      res.render("profile",{employee});
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
 });
 
 router.get("/signin", (req, res) => {
@@ -117,9 +117,11 @@ router.post("/user/edit", (req, res) => {
       if (user) {
         if (user.phone == phone && user.department === department) {
           if (editField === "first") {
-            Employee.updateOne({$set:{
-              first: info,
-            }})
+            Employee.updateOne({
+              $set: {
+                first: info,
+              },
+            })
               .then(() => {
                 req.flash("success_msg", "Information updated...");
                 res.redirect("/edit");
@@ -128,9 +130,11 @@ router.post("/user/edit", (req, res) => {
                 console.log(err);
               });
           } else if (editField === "last") {
-            Employee.updateOne({$set: {
-              last: info,
-            }})
+            Employee.updateOne({
+              $set: {
+                last: info,
+              },
+            })
               .then(() => {
                 req.flash("success_msg", "Information updated...");
                 res.redirect("/edit");
@@ -139,9 +143,11 @@ router.post("/user/edit", (req, res) => {
                 console.log(err);
               });
           } else if (editField === "phone") {
-            Employee.updateOne({$set: {
-              phone: info,
-            }})
+            Employee.updateOne({
+              $set: {
+                phone: info,
+              },
+            })
               .then(() => {
                 req.flash("success_msg", "Information updated...");
                 res.redirect("/edit");
@@ -150,9 +156,11 @@ router.post("/user/edit", (req, res) => {
                 console.log(err);
               });
           } else {
-            Employee.updateOne({$set: {
-              department: info,
-            }})
+            Employee.updateOne({
+              $set: {
+                department: info,
+              },
+            })
               .then(() => {
                 req.flash("success_msg", "Information updated...");
                 res.redirect("/edit");
