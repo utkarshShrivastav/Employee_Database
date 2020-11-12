@@ -1,0 +1,80 @@
+body{
+    background: grey;
+    background-image: url(https://marketinados.com/wp-content/uploads/2018/03/background-tech-background.png);
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+.myform{
+    box-sizing: border-box;
+    background:rgb(252,227,133);
+    width:100%;
+    float: left;
+    margin: 0px;
+    border-collapse: collapse;
+}
+
+.table{
+    float:right;
+    border-collapse: collapse;
+}
+
+.submit,.edit,.delete,.logout{
+    border: none;
+    outline: none;
+    margin: 0px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: transparent;
+    font-weight: bolder;
+    font-size: 18.5px;
+    padding: 6px 10px;
+}
+
+.submit:hover,.edit:hover,.delete:hover,.logout:hover{
+    
+    font-style: italic;
+    background:#ce8500;
+}
+
+.table2{
+    margin: 10px auto;
+}
+
+.innerForm{
+    border-collapse: collapse;
+}
+.taskbar{
+    max-width:1000px;
+    min-width:700px;
+    border:none;
+    outline: none;
+    background-color: rgba(92,89,89,0.8);
+    font-size:20px;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 100px;
+    padding:6px 20px;
+}
+.taskbar::placeholder{
+    color:black;
+    font-weight: bold;
+}
+.taskbar:hover{
+    background: rgba(68, 67, 67, 0.8);
+    color:white
+}
+.taskButton{
+
+    border:none;
+    outline: none;
+    background-color: rgba(92,89,89,0.8);
+    font-size:20px;
+    font-style: italic;
+    margin-top: 100px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding:6px 20px;
+}

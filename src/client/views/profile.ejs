@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nodejs & Passport App</title>
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+
+<body>
+    <div class="myform">
+        <table class="table">
+            <tr>
+                <th>
+                    <a href="/submit">
+                        <button type="submit" class="submit">Submit</button>
+                    </a>
+                </th>
+                <th>
+                    <a href="/delete">
+                        <button type="submit" class="delete">Delete</button>
+                    </a>
+                </th>
+                <th>
+                    <form action="/user/logout" method="POST">
+                        <button type="submit" class="logout">Logout</button>
+                    </form>
+                </th>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
