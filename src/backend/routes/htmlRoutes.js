@@ -7,7 +7,15 @@ const passport = require("passport");
 const { ensureAuthenticated } = require("../config/Auth");
 
 router.get("/", ensureAuthenticated, (req, res) => {
-  res.render("profile");
+  var array = [];
+  Employee.find().then(user=>{
+      array.push(user);
+      console.log(array);
+    
+  }).catch(err=>{
+    console.log(err)
+  })
+  res.render("profile",{array:array});
 });
 
 router.get("/signin", (req, res) => {
@@ -94,6 +102,76 @@ router.post("/user/logout", (req, res) => {
 router.get("/submit", ensureAuthenticated, (req, res) => {
   res.render("submitionForm");
 });
+router.get("/edit", ensureAuthenticated, (req, res) => {
+  res.render("confirm");
+});
+
+router.post("/user/edit", (req, res) => {
+  const { email, phone, department, editField, info } = req.body;
+  console.log(req.body);
+  if (!email || !phone || !department || !editField || !info) {
+    req.flash("error_msg", "Please fill all fileds...");
+    res.redirect("/edit");
+  } else {
+    Employee.findOne({ email }).then((user) => {
+      if (user) {
+        if (user.phone == phone && user.department === department) {
+          if (editField === "first") {
+            Employee.updateOne({$set:{
+              first: info,
+            }})
+              .then(() => {
+                req.flash("success_msg", "Information updated...");
+                res.redirect("/edit");
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          } else if (editField === "last") {
+            Employee.updateOne({$set: {
+              last: info,
+            }})
+              .then(() => {
+                req.flash("success_msg", "Information updated...");
+                res.redirect("/edit");
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          } else if (editField === "phone") {
+            Employee.updateOne({$set: {
+              phone: info,
+            }})
+              .then(() => {
+                req.flash("success_msg", "Information updated...");
+                res.redirect("/edit");
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          } else {
+            Employee.updateOne({$set: {
+              department: info,
+            }})
+              .then(() => {
+                req.flash("success_msg", "Information updated...");
+                res.redirect("/edit");
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
+        } else {
+          req.flash("error_msg", "Given credentials does not match...");
+          res.redirect("/edit");
+        }
+      } else {
+        req.flash("error_msg", "This employee is not registered...");
+        res.redirect("/edit");
+      }
+    });
+  }
+});
 
 router.get("/delete", ensureAuthenticated, (req, res) => {
   res.render("delete");
@@ -165,6 +243,5 @@ router.post("/user/delete", (req, res) => {
       });
   }
 });
-
 
 module.exports = router;

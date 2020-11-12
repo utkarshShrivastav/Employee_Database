@@ -30,7 +30,7 @@ body{
 }
 
 
-.first,.last,.email,.address,.id{
+.first,.last,.email,.address,.field,.info{
     width:100%;
     background: rgba(90, 89, 89, 0.493);
     border: none;
@@ -74,7 +74,7 @@ body{
     margin-bottom: 10px;
     margin-top:-5px
 }
-.first:hover,.last:hover,.email:hover,.address:hover,.phone:hover,.department:hover,.id:hover{
+.first:hover,.last:hover,.email:hover,.address:hover,.phone:hover,.department:hover,.field:hover,.info:hover{
     background: rgba(68, 67, 67, 0.8);
     color:white
 }

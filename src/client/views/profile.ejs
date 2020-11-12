@@ -18,6 +18,11 @@
                     </a>
                 </th>
                 <th>
+                    <a href="/edit">
+                        <button type="submit" class="edit">Edit</button>
+                    </a>
+                </th>
+                <th>
                     <a href="/delete">
                         <button type="submit" class="delete">Delete</button>
                     </a>
@@ -30,6 +35,10 @@
             </tr>
         </table>
     </div>
+
+    <% for(i=0;i<array.length;i++){%>
+        <%=array[i]%>;
+    <%}%>
 </body>
 
 </html>

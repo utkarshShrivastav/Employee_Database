@@ -43,13 +43,19 @@
                 <img class="image" src="https://www.pinclipart.com/picdir/big/487-4877720_user-svg-icon-free-transparent-background-registered-user.png" width = "150px">
             </div>
             <div>
-                <form method="POST" action="/user/delete">
+                <form method="POST" action="/user/edit">
                     <div>
                         <input class="email" type="email" placeholder="Email  address" name="email">
                     </div>
                     <div>
                         <input class="phone" type="number" placeholder="Phone number" name="phone">
                         <input class="department" type="text" placeholder="Department" name="department">
+                    </div>
+                    <div>
+                        <input class="field" type="text" placeholder="Field you want to edit" name="editField">
+                    </div>
+                    <div>
+                        <input class="info" type="text" placeholder="Updated information" name="info">
                     </div>
                     <div>
                         <button type="submit" class="submit">Submit</button>
