@@ -3,13 +3,13 @@ const router = express.Router();
 const User = require("../databases/User");
 const Employee = require("../databases/Employee");
 const bcrypt = require("bcryptjs");
+const employeeController = require("../controller/employeeController");
 const passport = require("passport");
 const { ensureAuthenticated } = require("../config/Auth");
 
 router.get("/", ensureAuthenticated, (req, res) => {
   Employee.find()
     .then((employee) => {
-      console.log(employee);
       res.render("profile",{employee});
     })
     .catch((err) => {
@@ -117,7 +117,7 @@ router.post("/user/edit", (req, res) => {
       if (user) {
         if (user.phone == phone && user.department === department) {
           if (editField === "first") {
-            Employee.updateOne({
+            Employee.updateOne({email},{
               $set: {
                 first: info,
               },
@@ -130,7 +130,7 @@ router.post("/user/edit", (req, res) => {
                 console.log(err);
               });
           } else if (editField === "last") {
-            Employee.updateOne({
+            Employee.updateOne({email},{
               $set: {
                 last: info,
               },
@@ -143,7 +143,7 @@ router.post("/user/edit", (req, res) => {
                 console.log(err);
               });
           } else if (editField === "phone") {
-            Employee.updateOne({
+            Employee.updateOne({email},{
               $set: {
                 phone: info,
               },
@@ -156,7 +156,7 @@ router.post("/user/edit", (req, res) => {
                 console.log(err);
               });
           } else {
-            Employee.updateOne({
+            Employee.updateOne({email},{
               $set: {
                 department: info,
               },
@@ -252,4 +252,6 @@ router.post("/user/delete", (req, res) => {
   }
 });
 
+router.get("/user/edit/:email",employeeController.getEditForm);
+router.post("/user/edit/:email",employeeController.editEmployee);
 module.exports = router;
